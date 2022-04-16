@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'show.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    {{msg}}
+    <h2 id="head">All Data Records</h2>
+    <div id="SecondDiv">
+        <form action="/">
+            <input type="Submit" value="<<Back">
+
+        </form>
+    </div>
+    <div id="OnneDiv">
+        <table>
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Phone</th>
+                <th>Buttons</th>
+            </thead>
+            {% for d in data %}
+            <tr>
+                <td>{{d.ID}}</td>
+                <td>{{d.name}}</td>
+                <td>{{d.address}}</td>
+                <td>{{d.phone}}</td>
+                <td>
+                    <a href="/edit?id={{d.ID}}">Edit</a>
+                    <a href="/delete?id={{d.ID}}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+body{
+    background-color: rgb(107, 189, 152);
+}
+#DivOne{
+    background-color: rgb(226, 225, 152);
+    max-width: fit-content;
+    padding: 1%;
+    margin-left: 40%;
+    margin-top: 15%;
+
+}
+#btn{
+    margin-left: 35%;
+    
+}
+#id{
+    margin-left: 17.9%;
+}
+#name{
+    margin-left: 7.4%;
+}
+#phone{
+    margin-left: 6%;
+}
