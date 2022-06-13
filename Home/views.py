@@ -1,4 +1,5 @@
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from Home.models import cruddata
@@ -9,6 +10,7 @@ def home(request):
 
 def show(request):
     data = cruddata.objects.all()
+    
     return render(request, "show.html", {'data': data})
 
 def send(request):
@@ -19,9 +21,8 @@ def send(request):
         phone = request.POST['phone']
         cruddata(ID = ID, name = name, address = address, phone = phone).save()
         msg = "Data Stored Successfully"
+        
         return render(request, "home.html", {'msg':msg})
-    else:
-        return HttpResponse("<h1>404 - Not found</h1>")
 
 def delete(request):
     ID = request.GET['id']
@@ -38,14 +39,14 @@ def edit(request):
 
     return render(request, "edit.html", {'ID':ID, 'name':name, 'address':address, 'phone':phone})
 
-def RecordEdited(request):
+def recordEdited(request):
     if request.method == 'POST':
         ID = request.POST['id']
         name = request.POST['name']
         address = request.POST['address']
         phone = request.POST['phone']
         cruddata.objects.filter(ID = ID).update(name= name, address=address, phone=phone)
+        
         return HttpResponseRedirect("show")
-    else:
-        return HttpResponse("<h1>404 - Not Found</h1>")
+   
 
